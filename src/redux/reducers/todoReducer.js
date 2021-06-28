@@ -1,7 +1,16 @@
 import { ADD } from '../actions/types';
 
+/**
+ * A TODO object should look like this:
+ * {
+ *     name: string;
+ *     description: string;
+ *     completed: bool;
+ * }
+ */
+
 const INITIAL_STATE = {
-  todos: [],
+  values: [],
 };
 
 export default (state = INITIAL_STATE, action) => {
@@ -9,7 +18,7 @@ export default (state = INITIAL_STATE, action) => {
     case ADD:
       return {
         ...state,
-        todos: [...state.todos, action.payload],
+        values: [...state.values, action.payload],
       };
     default:
       return state;

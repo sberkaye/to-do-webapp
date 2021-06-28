@@ -1,9 +1,11 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { List } from '@material-ui/core';
+import PropType from 'prop-types';
 import Todo from './Todo';
 
-const createItems = () =>
-  [0, 1, 2, 3, 4].map((item) => (
+const createItems = (todos) =>
+  todos.map((item) => (
     <Todo
       key={item}
       completed={item % 2 === 0}
@@ -12,6 +14,14 @@ const createItems = () =>
     />
   ));
 
-const TodoList = () => <List>{createItems()}</List>;
+const TodoList = (props) => <List>{createItems(props.todos)}</List>;
 
-export default TodoList;
+const mapStateToProps = (state) => ({
+  todos: state.todos.values,
+});
+
+TodoList.propTypes = {
+  todos: PropType.arrayOf(PropType.shape),
+};
+
+export default connect(mapStateToProps)(TodoList);
