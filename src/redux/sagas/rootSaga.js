@@ -1,9 +1,11 @@
-import { takeLatest } from '@redux-saga/core/effects';
-import { handleGetTodos } from './handlers/todos';
-import { FETCH_TODOS } from '../actions/types';
+import { takeLatest, takeEvery, all } from '@redux-saga/core/effects';
+import { handleGetTodos, handleAddTodo } from './handlers/todos';
+import { FETCH_TODOS, ADD } from '../actions/types';
 
-// root saga which will forward each FETCH_TODOS action
-// to the handler
+// root saga which will forward actions to the corresponding handlers
 export function* rootSaga() {
-  yield takeLatest(FETCH_TODOS, handleGetTodos);
+  yield all([
+    takeLatest(FETCH_TODOS, handleGetTodos),
+    takeEvery(ADD, handleAddTodo),
+  ]);
 }

@@ -4,15 +4,19 @@ import axios from 'axios';
 function requestGetTodos() {
   return axios.request({
     method: 'get',
-    url: 'http://localhost:3000/todos',
+    url: 'http://localhost:3004/todos',
   });
 }
 
-// function requestPostTodo(todo) {
-//   return axios.request({
-//     method: 'post',
-//     url
-//   });
-// }
+// request to create a new todo via sending a post request
+function requestPostTodo(todo) {
+  return axios.request({
+    method: 'post',
+    url: 'http://localhost:3004/todos',
+    data: {
+      ...todo,
+    },
+  });
+}
 
-export { requestGetTodos };
+export { requestGetTodos, requestPostTodo };

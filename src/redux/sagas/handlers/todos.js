@@ -1,5 +1,5 @@
 import { call, put } from 'redux-saga/effects';
-import { requestGetTodos } from '../requests/todos';
+import { requestGetTodos, requestPostTodo } from '../requests/todos';
 import { setTodos } from '../../actions/actionTodos';
 
 // handler for todos - asynchronously gets a response from
@@ -14,8 +14,13 @@ function* handleGetTodos() {
   }
 }
 
-// function* handleAddTodo(action) {
+function* handleAddTodo(action) {
+  try {
+    yield call(requestPostTodo(action));
+    handleGetTodos();
+  } catch (err) {
+    console.err(err);
+  }
+}
 
-// }
-
-export { handleGetTodos };
+export { handleGetTodos, handleAddTodo };
