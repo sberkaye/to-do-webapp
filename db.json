@@ -1,0 +1,46 @@
+{
+  "todos": [
+    {
+      "name": "Buy milk",
+      "description": "go to market and buy some milk",
+      "completed": false,
+      "writtenBy": "Berkay Ergin",
+      "completedBy": null
+    },
+    {
+      "name": "learn redux saga",
+      "description": "read the docs and watch some tutorials to learn redux sage",
+      "completed": true,
+      "writtenBy": "Berkay Ergin",
+      "completedBy": "Berkay Ergin"
+    },
+    {
+      "name": "graduate from Hogwarts",
+      "description": "attend Hogwarts and graduate before getting killed by the dark Lord",
+      "completed": false,
+      "writtenBy": "Harry Potter",
+      "completedBy": null
+    },
+    {
+      "name": "make coffee",
+      "description": "make a cup of coffee to not to fall asleep",
+      "completed": true,
+      "writtenBy": "Albert Einstein",
+      "completedBy": null
+    },
+    {
+      "name": "do your homework",
+      "description": "to get a high score in the exam",
+      "completed": false,
+      "writtenBy": null,
+      "completedBy": null
+    },
+    {
+      "name": "take out the trash",
+      "description": "no need for an explanation",
+      "completed": false,
+      "writtenBy": "me",
+      "completedBy": null
+    }
+  ]
+}

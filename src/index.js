@@ -6,9 +6,12 @@ import createSagaMiddleware from 'redux-saga';
 
 import App from './components/App';
 import reducers from './redux/reducers';
+import { rootSaga } from './redux/sagas/rootSaga';
 
 const sagaMiddleware = createSagaMiddleware();
 const store = createStore(reducers, applyMiddleware(sagaMiddleware));
+
+sagaMiddleware.run(rootSaga);
 
 ReactDOM.render(
   <React.StrictMode>
