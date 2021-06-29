@@ -16,10 +16,9 @@ function* handleGetTodos() {
 
 function* handleAddTodo(action) {
   try {
-    yield call(requestPostTodo(action));
-    handleGetTodos();
+    yield call(requestPostTodo, action.payload);
   } catch (err) {
-    console.err(err);
+    console.error(err);
   }
 }
 

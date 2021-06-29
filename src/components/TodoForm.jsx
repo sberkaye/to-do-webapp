@@ -7,6 +7,7 @@ import {
   Grid,
   TextField,
 } from '@material-ui/core';
+import { useDispatch } from 'react-redux';
 import PropType from 'prop-types';
 import { useFormik } from 'formik';
 import { addTodo } from '../redux/actions/actionTodos';
@@ -87,6 +88,7 @@ const validate = (values) => {
 
 const TodoForm = (props) => {
   const classes = useStyles();
+  const dispatch = useDispatch();
   const {
     closeDialog,
     showSnackbar,
@@ -110,7 +112,7 @@ const TodoForm = (props) => {
     onSubmit: (val) => {
       closeDialog();
       if (type === 'add') {
-        addTodo({ ...val });
+        dispatch(addTodo(val));
       }
       showSnackbar(true);
     },

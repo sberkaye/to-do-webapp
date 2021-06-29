@@ -1,4 +1,4 @@
-import { takeLatest, takeEvery, all } from '@redux-saga/core/effects';
+import { takeLatest, all } from '@redux-saga/core/effects';
 import { handleGetTodos, handleAddTodo } from './handlers/todos';
 import { FETCH_TODOS, ADD } from '../actions/types';
 
@@ -6,6 +6,6 @@ import { FETCH_TODOS, ADD } from '../actions/types';
 export function* rootSaga() {
   yield all([
     takeLatest(FETCH_TODOS, handleGetTodos),
-    takeEvery(ADD, handleAddTodo),
+    takeLatest(ADD, handleAddTodo),
   ]);
 }

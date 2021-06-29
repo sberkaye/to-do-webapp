@@ -13,9 +13,7 @@ function requestPostTodo(todo) {
   return axios.request({
     method: 'post',
     url: 'http://localhost:3004/todos',
-    data: {
-      ...todo,
-    },
+    data: todo,
   });
 }
 

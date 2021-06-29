@@ -62,7 +62,7 @@ const TodoDialog = (props) => {
 TodoDialog.propTypes = {
   open: PropTypes.bool.isRequired,
   handleOpen: PropTypes.func.isRequired,
-  name: PropTypes.string.isRequired,
+  name: PropTypes.string,
   type: PropTypes.string.isRequired,
 };
 
