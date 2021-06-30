@@ -12,8 +12,9 @@ import {
 import { useDispatch } from 'react-redux';
 import PropType from 'prop-types';
 import { useFormik } from 'formik';
-import { addTodo, editTodo } from '../redux/actions/actionTodos';
+import { addTodoRequest, editTodoRequest } from '../redux/actions/actionTodos';
 
+// styling for form components
 const useStyles = makeStyles((theme) => ({
   textField: {
     boxShadow: 'none',
@@ -90,7 +91,6 @@ const validate = (values) => {
 
 const TodoForm = (props) => {
   const classes = useStyles();
-  console.log('form props: ', props);
   const dispatch = useDispatch();
   const {
     closeDialog,
@@ -116,23 +116,26 @@ const TodoForm = (props) => {
     validate,
     onSubmit: (val) => {
       closeDialog();
+      // dispatch actions according to the type of the form
       if (type === 'add') {
-        dispatch(addTodo(val));
-      } else {
-        dispatch(editTodo(id, val));
+        dispatch(addTodoRequest(val));
+      } else if (type === 'edit') {
+        dispatch(editTodoRequest(id, val));
       }
       showSnackbar(true);
     },
   });
 
-  console.log(formik.initialValues);
-
+  // helper method to show proper labels in the form
+  // e.g. writtenBy -> WRITTEN BY
   const handleLabel = (label) => {
     let newLabel = label.replace(/([A-Z])/g, ' $1').trim(); // regex to put a space in front of capitalized letter
     newLabel = newLabel.toUpperCase();
     return newLabel;
   };
 
+  // create an input field in the form, use formik to handle
+  // onChange events and validation
   const renderFormInput = (label) => (
     <Grid item container direction="row" alignItems="center">
       <Grid item xs={3} sm={2}>
@@ -160,6 +163,8 @@ const TodoForm = (props) => {
     </Grid>
   );
 
+  // return input fields, checkbox to check if the todo is completed
+  // also another input field if the todo is completed to set completedBy
   return (
     <>
       <form onSubmit={formik.handleSubmit} className={classes.form}>

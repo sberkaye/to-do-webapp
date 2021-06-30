@@ -1,4 +1,13 @@
-import { FETCH_TODOS, SET_TODOS, EDIT_TODO, DELETE_TODO, ADD } from './types';
+import {
+  FETCH_TODOS,
+  SET_TODOS,
+  EDIT_TODO,
+  EDIT_TODO_REQUEST,
+  DELETE_TODO_REQUEST,
+  DELETE_TODO,
+  ADD,
+  ADD_REQUEST,
+} from './types';
 
 export const fetchTodos = () => ({
   type: FETCH_TODOS,
@@ -9,9 +18,9 @@ export const setTodos = (todos) => ({
   payload: todos,
 });
 
-export const addTodo = (todo) => ({
-  type: ADD,
-  payload: todo,
+export const deleteTodo = (index) => ({
+  type: DELETE_TODO,
+  payload: index,
 });
 
 export const editTodo = (index, todoObj) => ({
@@ -19,7 +28,24 @@ export const editTodo = (index, todoObj) => ({
   payload: [index, todoObj],
 });
 
-export const deleteTodo = (index) => ({
-  type: DELETE_TODO,
+export const addTodo = (todo) => ({
+  type: ADD,
+  payload: todo,
+});
+
+// request actions to be called to notify the watcher saga
+
+export const editTodoRequest = (index, todoObj) => ({
+  type: EDIT_TODO_REQUEST,
+  payload: [index, todoObj],
+});
+
+export const deleteTodoRequest = (index) => ({
+  type: DELETE_TODO_REQUEST,
   payload: index,
+});
+
+export const addTodoRequest = (todo) => ({
+  type: ADD_REQUEST,
+  payload: todo,
 });

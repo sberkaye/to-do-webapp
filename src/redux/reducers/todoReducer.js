@@ -26,7 +26,7 @@ export default (state = INITIAL_STATE, action) => {
       return {
         ...state,
         values: [
-          ...state.values.slice(0, action.payload[0] - 1),
+          ...state.values.slice(0, action.payload[0]),
           action.payload[1],
           ...state.values.slice(action.payload[0] + 1),
         ],

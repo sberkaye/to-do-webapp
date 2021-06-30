@@ -8,7 +8,7 @@ function requestGetTodos() {
   });
 }
 
-// request to create a new todo via sending a post request
+// request to create a new todo via sending a POST request
 function requestPostTodo(todo) {
   return axios.request({
     method: 'post',
@@ -17,6 +17,7 @@ function requestPostTodo(todo) {
   });
 }
 
+// request to delete a todo via sending a DELETE request
 function requestDeleteTodo(index) {
   return axios.request({
     method: 'delete',
@@ -24,6 +25,7 @@ function requestDeleteTodo(index) {
   });
 }
 
+// request to edit a todo via sending a PUT request
 function requestEditTodo(todo) {
   return axios.request({
     method: 'put',
@@ -31,18 +33,5 @@ function requestEditTodo(todo) {
     data: todo[1],
   });
 }
-
-// const fixIndexes = async (fromIdx) => {
-//   const todos = await axios.get('http://localhost:3004/todos');
-//   const length = todos.length;
-//   console.log('length: ', length);
-//   const fixRequests = [];
-//   for (let i = fromIdx + 1; i < length; i++) {
-//     fixRequests.push(
-//       axios.patch(`http://localhost:3004/todos/${i}`, { id: i - 1 }),
-//     );
-//   }
-//   Promise.all(fixRequests).then((values) => console.log(values));
-// };
 
 export { requestGetTodos, requestPostTodo, requestDeleteTodo, requestEditTodo };

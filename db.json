@@ -1,28 +1,28 @@
 {
   "todos": [
     {
-      "name": "merhabafffff",
-      "description": "fsdsdgfdsg",
+      "name": "learn saga",
+      "description": "it shouldn't be tougher than thunk, right?",
+      "completed": true,
+      "writtenBy": "berkay",
+      "completedBy": "berkay",
+      "id": 1
+    },
+    {
+      "name": "kill the kid",
+      "description": "kill Harry Potter to rule the world",
       "completed": false,
-      "writtenBy": "ffffffffff",
+      "writtenBy": "lord voldemort",
       "completedBy": "",
-      "id": 0
+      "id": 3
     },
     {
-      "name": "naber ar",
-      "description": "ne diyeceğimi bilemiyorum burada",
-      "completed": true,
-      "writtenBy": "berkay",
-      "completedBy": "arda",
-      "id": 5
-    },
-    {
-      "name": "naber dsgdfgf",
-      "description": "ne diyeceğimi bilemiyorum burada",
-      "completed": true,
-      "writtenBy": "berkay",
-      "completedBy": "arda",
-      "id": 6
+      "name": "invade earth",
+      "description": "we need a new planet suspiciously similiar to earth",
+      "completed": false,
+      "writtenBy": "aliens",
+      "completedBy": "",
+      "id": 4
     }
   ]
 }

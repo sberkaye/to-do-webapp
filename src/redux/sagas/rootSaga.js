@@ -5,15 +5,20 @@ import {
   handleDeleteTodo,
   handleEditTodo,
 } from './handlers/todos';
-import { FETCH_TODOS, ADD, DELETE_TODO, EDIT_TODO } from '../actions/types';
+import {
+  FETCH_TODOS,
+  ADD_REQUEST,
+  DELETE_TODO_REQUEST,
+  EDIT_TODO_REQUEST,
+} from '../actions/types';
 import { takeEvery } from 'redux-saga/effects';
 
-// root saga which will forward actions to the corresponding handlers
+// root saga which will watch for actions and forward them to the corresponding handlers
 export function* rootSaga() {
   yield all([
     takeLatest(FETCH_TODOS, handleGetTodos),
-    takeEvery(ADD, handleAddTodo),
-    takeEvery(DELETE_TODO, handleDeleteTodo),
-    takeEvery(EDIT_TODO, handleEditTodo),
+    takeEvery(ADD_REQUEST, handleAddTodo),
+    takeLatest(DELETE_TODO_REQUEST, handleDeleteTodo),
+    takeEvery(EDIT_TODO_REQUEST, handleEditTodo),
   ]);
 }

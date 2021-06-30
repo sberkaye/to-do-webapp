@@ -20,6 +20,7 @@ import {
 } from '@material-ui/icons';
 import PropType from 'prop-types';
 
+// styles
 const useStyles = makeStyles((theme) => ({
   todoItem: (props) => ({
     display: 'flex',
@@ -67,6 +68,7 @@ const Todo = (props) => {
     handleDelete,
     showDialog,
     setDialogProps,
+    setDialogType,
   } = props;
   const classes = useStyles(props);
 
@@ -110,6 +112,7 @@ const Todo = (props) => {
         <ListItemSecondaryAction className={classes.secondaryAction}>
           <IconButton
             onClick={() => {
+              setDialogType();
               setDialogProps();
               showDialog(true);
             }}
@@ -135,6 +138,7 @@ Todo.propTypes = {
   handleDelete: PropType.func.isRequired,
   showDialog: PropType.func.isRequired,
   setDialogProps: PropType.func.isRequired,
+  setDialogType: PropType.func.isRequired,
 };
 
 export default Todo;

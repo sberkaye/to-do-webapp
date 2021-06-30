@@ -1,3 +1,6 @@
+/**
+ * A basic floating action button to open up a dialog to add new todos
+ */
 import React from 'react';
 import { Fab } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';

@@ -16,7 +16,6 @@ const useStyles = makeStyles((theme) => ({
 // Transition component to animate the entrance of the Snackbar
 // eslint-disable-next-line react/display-name
 const Transition = forwardRef((props, ref) => (
-  // eslint-disable-next-line react/jsx-props-no-spreading
   <Slide direction="up" ref={ref} {...props} />
 ));
 
@@ -28,11 +27,17 @@ const App = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
 
+  // handler for add button
   const handleAddClick = () => {
     setDialogProps({});
     setDialogType('add');
     setShowDialog(true);
   };
+
+  // there is only 1 dialog and snackbar in the entire app and they
+  // are controlled by the local state of the App component, whenever
+  // user opens a new dialog, the same dialog comes up with different
+  // props(dialogProps)
 
   const renderDialog = (
     <TodoDialog
@@ -60,6 +65,7 @@ const App = () => {
     />
   );
 
+  // fetch todos whenever the App component mounts
   useEffect(() => {
     dispatch(fetchTodos());
   }, [dispatch]);

@@ -22,7 +22,6 @@ const styles = (theme) => ({
 
 // a different implementation of DialogTitle to contain a close button
 const CustomizedDialogTitle = withStyles(styles)((props) => {
-  // eslint-disable-next-line object-curly-newline
   const { children, classes, onClose, ...other } = props;
   return (
     <MuiDialogTitle disableTypography className={classes.root} {...other}>
