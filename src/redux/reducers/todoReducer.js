@@ -20,10 +20,17 @@ export default (state = INITIAL_STATE, action) => {
     case SET_TODOS:
       return {
         ...state,
-        values: [...state.values, ...action.payload],
+        values: action.payload,
       };
     case EDIT_TODO:
-      return {};
+      return {
+        ...state,
+        values: [
+          ...state.values.slice(0, action.payload[0] - 1),
+          action.payload[1],
+          ...state.values.slice(action.payload[0] + 1),
+        ],
+      };
     case DELETE_TODO: {
       const { index } = action.payload;
       return {

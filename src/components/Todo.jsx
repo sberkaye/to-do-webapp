@@ -2,7 +2,7 @@
  * A simple TODO item made by using Material UI's ListItem component
  */
 
-import React, { useState, forwardRef } from 'react';
+import React from 'react';
 import clsx from 'clsx';
 import {
   ListItem,
@@ -11,8 +11,6 @@ import {
   ListItemSecondaryAction,
   IconButton,
   Paper,
-  Snackbar,
-  Slide,
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import {
@@ -21,7 +19,6 @@ import {
   DeleteRounded,
 } from '@material-ui/icons';
 import PropType from 'prop-types';
-import TodoDialog from './TodoDialog';
 
 const useStyles = makeStyles((theme) => ({
   todoItem: (props) => ({
@@ -60,39 +57,18 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-// eslint-disable-next-line react/display-name
-const Transition = forwardRef((props, ref) => (
-  // eslint-disable-next-line react/jsx-props-no-spreading
-  <Slide direction="up" ref={ref} {...props} />
-));
-
 const Todo = (props) => {
-  const [showDialog, setShowDialog] = useState(false);
-  const [showSnackbar, setShowSnackbar] = useState(false);
-
-  const { name, description, completed, writtenBy, completedBy } = props;
+  const {
+    name,
+    description,
+    completed,
+    writtenBy,
+    completedBy,
+    handleDelete,
+    showDialog,
+    setDialogProps,
+  } = props;
   const classes = useStyles(props);
-
-  const renderDialog = (
-    <TodoDialog
-      open={showDialog}
-      handleOpen={setShowDialog}
-      showSnackbar={setShowSnackbar}
-      {...props}
-    />
-  );
-
-  const renderSnackbar = (
-    <Snackbar
-      open={showSnackbar}
-      onClose={() => {
-        setShowSnackbar(false);
-      }}
-      autoHideDuration={1000}
-      TransitionComponent={Transition}
-      message="TODO edited successfully"
-    />
-  );
 
   return (
     <>
@@ -134,19 +110,18 @@ const Todo = (props) => {
         <ListItemSecondaryAction className={classes.secondaryAction}>
           <IconButton
             onClick={() => {
-              setShowDialog(true);
+              setDialogProps();
+              showDialog(true);
             }}
             aria-label="Edit TODO"
           >
             <SettingsRounded />
           </IconButton>
-          <IconButton aria-label="Delete TODO">
+          <IconButton onClick={handleDelete} aria-label="Delete TODO">
             <DeleteRounded />
           </IconButton>
         </ListItemSecondaryAction>
       </ListItem>
-      {renderDialog}
-      {renderSnackbar}
     </>
   );
 };
@@ -157,7 +132,9 @@ Todo.propTypes = {
   completed: PropType.bool.isRequired,
   writtenBy: PropType.string,
   completedBy: PropType.string,
-  index: PropType.number.isRequired,
+  handleDelete: PropType.func.isRequired,
+  showDialog: PropType.func.isRequired,
+  setDialogProps: PropType.func.isRequired,
 };
 
 export default Todo;

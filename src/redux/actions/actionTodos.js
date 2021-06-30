@@ -16,10 +16,7 @@ export const addTodo = (todo) => ({
 
 export const editTodo = (index, todoObj) => ({
   type: EDIT_TODO,
-  payload: {
-    index,
-    todoObj,
-  },
+  payload: [index, todoObj],
 });
 
 export const deleteTodo = (index) => ({

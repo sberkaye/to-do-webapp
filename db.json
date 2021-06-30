@@ -1,94 +1,28 @@
 {
   "todos": [
     {
-      "id": 1,
-      "name": "Buy milk",
-      "description": "go to market and buy some milk",
+      "name": "merhabafffff",
+      "description": "fsdsdgfdsg",
       "completed": false,
-      "writtenBy": "Berkay Ergin"
+      "writtenBy": "ffffffffff",
+      "completedBy": "",
+      "id": 0
     },
     {
-      "id": 2,
-      "name": "learn redux saga",
-      "description": "read the docs and watch some tutorials to learn redux sage",
+      "name": "naber ar",
+      "description": "ne diyeceğimi bilemiyorum burada",
       "completed": true,
-      "writtenBy": "Berkay Ergin",
-      "completedBy": "Berkay Ergin"
+      "writtenBy": "berkay",
+      "completedBy": "arda",
+      "id": 5
     },
     {
-      "id": 3,
-      "name": "graduate from Hogwarts",
-      "description": "attend Hogwarts and graduate before getting killed by the Dark Lord",
-      "completed": false,
-      "writtenBy": "Harry Potter"
-    },
-    {
-      "id": 4,
-      "name": "make coffee",
-      "description": "make a cup of coffee to not to fall asleep",
+      "name": "naber dsgdfgf",
+      "description": "ne diyeceğimi bilemiyorum burada",
       "completed": true,
-      "writtenBy": "Albert Einstein"
-    },
-    {
-      "id": 5,
-      "name": "do your homework",
-      "description": "to get a high score in the exam",
-      "completed": false
-    },
-    {
-      "id": 6,
-      "name": "take out the trash",
-      "description": "no need for an explanation",
-      "completed": false,
-      "writtenBy": "me"
-    },
-    {
-      "name": "dasdasdadsfasdf",
-      "description": "sdfsdafsdafsdfsdfsdfsdfsdafasdf",
-      "completed": false,
-      "writtenBy": "",
-      "completedBy": "",
-      "id": 7
-    },
-    {
-      "name": "dadadsf",
-      "description": "sdfsdafsdafsdfsdfsdfsdfsdafasdf",
-      "completed": false,
-      "writtenBy": "",
-      "completedBy": "",
-      "id": 8
-    },
-    {
-      "name": "dasdasdadsfasdf",
-      "description": "Kanuni Mah, 876. Sokak, 7/10, Keçiören/Ankara",
-      "completed": false,
-      "writtenBy": "fsdfsdf",
-      "completedBy": "",
-      "id": 9
-    },
-    {
-      "name": "bbb",
-      "description": "bbbbbbbbbbbbbbbbbbbbbbbbbbb",
-      "completed": false,
-      "writtenBy": "",
-      "completedBy": "",
-      "id": 10
-    },
-    {
-      "name": "aaaaaaaaaaaaaaa",
-      "description": "aaaaaaaaaaaaaaaaaaaaaaaaaaa",
-      "completed": false,
-      "writtenBy": "",
-      "completedBy": "",
-      "id": 11
-    },
-    {
-      "name": "ccccccccccccc",
-      "description": "ccccccccccccccccccc",
-      "completed": false,
-      "writtenBy": "",
-      "completedBy": "",
-      "id": 12
+      "writtenBy": "berkay",
+      "completedBy": "arda",
+      "id": 6
     }
   ]
 }

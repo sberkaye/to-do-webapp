@@ -17,6 +17,7 @@ const Transition = forwardRef((props, ref) => (
 ));
 
 const TodoDialog = (props) => {
+  console.log(props);
   const { open, handleOpen, name, type } = props;
   const theme = useTheme();
   // will be true when the screen size is equal to or lower than 'sm'

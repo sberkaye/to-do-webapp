@@ -75,6 +75,7 @@ const App = () => {
           <TodoList
             handleShowDialog={setShowDialog}
             handleSetDialogProps={setDialogProps}
+            handleSetDialogType={setDialogType}
           />
         </Grid>
       </Grid>

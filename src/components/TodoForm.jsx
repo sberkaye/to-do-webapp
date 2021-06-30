@@ -6,11 +6,13 @@ import {
   Button,
   Grid,
   TextField,
+  Checkbox,
+  FormControlLabel,
 } from '@material-ui/core';
 import { useDispatch } from 'react-redux';
 import PropType from 'prop-types';
 import { useFormik } from 'formik';
-import { addTodo } from '../redux/actions/actionTodos';
+import { addTodo, editTodo } from '../redux/actions/actionTodos';
 
 const useStyles = makeStyles((theme) => ({
   textField: {
@@ -88,16 +90,18 @@ const validate = (values) => {
 
 const TodoForm = (props) => {
   const classes = useStyles();
+  console.log('form props: ', props);
   const dispatch = useDispatch();
   const {
     closeDialog,
     showSnackbar,
-    name,
-    description,
     completed,
     writtenBy,
     completedBy,
     type,
+    name,
+    description,
+    id,
   } = props;
 
   const formik = useFormik({
@@ -108,18 +112,23 @@ const TodoForm = (props) => {
       writtenBy,
       completedBy,
     },
+    enableReinitialize: true,
     validate,
     onSubmit: (val) => {
       closeDialog();
       if (type === 'add') {
         dispatch(addTodo(val));
+      } else {
+        dispatch(editTodo(id, val));
       }
       showSnackbar(true);
     },
   });
 
+  console.log(formik.initialValues);
+
   const handleLabel = (label) => {
-    let newLabel = label.replace(/([A-Z])/g, ' $1').trim();
+    let newLabel = label.replace(/([A-Z])/g, ' $1').trim(); // regex to put a space in front of capitalized letter
     newLabel = newLabel.toUpperCase();
     return newLabel;
   };
@@ -158,6 +167,22 @@ const TodoForm = (props) => {
           {renderFormInput('name')}
           {renderFormInput('description')}
           {renderFormInput('writtenBy')}
+          <Grid item xs={12}>
+            <FormControlLabel
+              control={
+                <Checkbox
+                  checked={formik.values.completed}
+                  name="completed"
+                  color="primary"
+                  onChange={() => {
+                    formik.setFieldValue('completed', !formik.values.completed);
+                  }}
+                />
+              }
+              label="Completed"
+            />
+          </Grid>
+          {formik.values.completed && renderFormInput('completedBy')}
         </Grid>
         <div className={classes.buttonContainer}>
           <Button className={classes.cancelButton} onClick={closeDialog}>
@@ -186,6 +211,7 @@ TodoForm.propTypes = {
   closeDialog: PropType.func.isRequired,
   showSnackbar: PropType.func.isRequired,
   type: PropType.string.isRequired,
+  id: PropType.number,
 };
 
 TodoForm.defaultProps = {
